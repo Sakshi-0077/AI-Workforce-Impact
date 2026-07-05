@@ -13,19 +13,19 @@ This repository contains a comprehensive exploratory data analysis (EDA) investi
 ## Project Structure
 
 ```
-AI-Disruption-Index/
-├── AI-Disruption-Index.ipynb       # Main analysis and visualizations
+AI-Workforce-Impact/
+├── AI-Workforce-Impact.ipynb       # Main analysis and visualizations
 ├── README.md                        # Project documentation
 ├── data/                            # Source datasets
 ├── outputs/                         # Generated visualizations and reports
-└── notebooks/                       # Additional exploratory analyses (optional)
+└── notebooks/                       # Additional exploratory analyses
 ```
 
 ## Methodology
 
 | Phase | Description |
 |-------|-------------|
-| Data Ingestion | Aggregated industry and workforce data from [sources] |
+| Data Ingestion | Aggregated industry and workforce data from multiple sources |
 | Data Cleaning | Handled missing values, validated data quality |
 | Feature Engineering | Constructed AI Adoption Index, Disruption Score, Skills Gap metrics |
 | Exploratory Analysis | Identified correlations, trends, and patterns |
@@ -41,19 +41,22 @@ AI-Disruption-Index/
 
 ## Key Findings
 
-*Document your actual analysis results here:*
-
 ### Industry Impact
+
+**ADD HERE:** Replace with your actual industry analysis findings
 - **[Sector Name]**: [Disruption level and key insight]
 - **[Sector Name]**: [Disruption level and key insight]
 - Example: "Finance sector shows 65% job automation risk, but 3x growth in data analytics roles"
 
 ### Workforce Trends
+
+**ADD HERE:** Include your analysis results
 - **High-Disruption Roles**: [List roles with disruption scores]
 - **Emerging Opportunities**: [Growth careers identified in your data]
 - **Skills Gap**: [Key skills showing highest demand increase]
 
 ### Quantitative Metrics
+
 | Metric | Value | Interpretation |
 |--------|-------|-----------------|
 | Average Disruption Index | [X.XX/10] | Overall industry transformation level |
@@ -62,15 +65,15 @@ AI-Disruption-Index/
 
 ## Outputs & Visualizations
 
-*Add descriptions of your generated outputs:*
-
 ### Charts & Reports
+
 - **Industry Disruption Heatmap** – Visualization of disruption levels across sectors
 - **Career Vulnerability Matrix** – Risk assessment by role and industry
 - **Skills Demand Trajectory** – Trending skills over time
 - **Opportunity Map** – High-growth career paths identified
 
 ### Generated Files
+
 ```
 outputs/
 ├── disruption_index_by_industry.csv      # Industry rankings and scores
@@ -81,15 +84,15 @@ outputs/
 │   ├── career_vulnerability.png
 │   ├── skills_trends.png
 │   └── opportunity_zones.png
-└── summary_report.pdf                    # Executive summary with key findings
+└── summary_report.pdf                    # Executive summary
 ```
 
 ## How to Use
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Sakshi-0077/AI-Disruption-Index.git
-   cd AI-Disruption-Index
+   git clone https://github.com/Sakshi-0077/AI-Workforce-Impact.git
+   cd AI-Workforce-Impact
    ```
 
 2. **Install dependencies**
@@ -98,7 +101,7 @@ outputs/
    ```
 
 3. **Run the analysis**
-   - Open `AI-Disruption-Index.ipynb` in Jupyter Notebook or Google Colab
+   - Open `AI-Workforce-Impact.ipynb` in Jupyter Notebook or Google Colab
    - Execute cells sequentially to reproduce the analysis
 
 4. **Review results**
@@ -108,24 +111,31 @@ outputs/
 
 ## Data Sources
 
-*Specify your data sources:*
-- [Source 1 - Description and access method]
-- [Source 2 - Description and access method]
-- [Data collection period and methodology notes]
+**ADD HERE:** Specify your data sources
+- Source 1: [Name, URL, access method]
+- Source 2: [Name, URL, access method]
+- Data collection period: [dates]
+- Methodology notes: [how data was collected/processed]
 
 ## Insights & Recommendations
 
 ### For Professionals
+
+**ADD HERE:** Your specific recommendations
 - Upskill in high-demand areas: [specific skills from your analysis]
 - Consider career transitions toward: [growth roles identified]
-- Timeline: [your predictions on when disruption will accelerate]
+- Timeline: [your predictions on disruption acceleration]
 
 ### For Organizations
-- Priority investment areas: [recommendations based on your findings]
+
+**ADD HERE:** Organization-focused insights
+- Priority investment areas: [based on your findings]
 - Workforce planning strategy: [specific recommendations]
 - Risk mitigation: [strategies to address disruption]
 
 ### For Policymakers & Researchers
+
+**ADD HERE:** Policy and research implications
 - Key labor market trends: [observations from your analysis]
 - Policy recommendations: [evidence-based suggestions]
 - Research implications: [contribution to broader AI impact understanding]
@@ -155,4 +165,4 @@ This project is available for educational and research purposes.
 
 ---
 
-**Last Updated:** 2024
+**Last Updated:** 2026
