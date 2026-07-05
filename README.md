@@ -1,4 +1,4 @@
-# 🤖 AI Disruption Index
+# 🤖 AI Workforce Impact Analysis
 ### Comprehensive Data Analysis on AI's Impact Across Industries & Careers
 
 ---
