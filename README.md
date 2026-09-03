@@ -1,168 +1,376 @@
 # AI Workforce Impact Analysis
 
-A data-driven research project quantifying artificial intelligence's transformative impact on global industries, career landscapes, and workforce dynamics.
+A data-driven analysis of how artificial intelligence is influencing employment, automation risk, career opportunities, salaries, and workforce trends.
 
 ## Overview
 
-This repository contains a comprehensive exploratory data analysis (EDA) investigating:
-- **AI adoption patterns** across industries and sectors
-- **Workforce disruption risks** and emerging opportunities
-- **Skills demand** shifts in the AI-driven economy
-- **Career trajectory** implications for professionals
+The rapid adoption of Artificial Intelligence is changing the way organizations operate and reshaping the skills and roles required across industries.
 
-## Project Structure
+This project analyzes the relationship between AI adoption, automation risk, technology-sector layoffs, career safety, and salary trends using publicly available datasets.
 
-```
-AI-Workforce-Impact/
-├── AI-Workforce-Impact.ipynb       # Main analysis and visualizations
-├── README.md                        # Project documentation
-├── data/                            # Source datasets
-├── outputs/                         # Generated visualizations and reports
-└── notebooks/                       # Additional exploratory analyses
-```
+The project combines exploratory data analysis, feature engineering, statistical analysis, data visualization, and machine learning to investigate how AI-related factors may influence workforce outcomes.
+
+## Objectives
+
+The project aims to:
+
+* Analyze AI adoption and automation risk across job roles and industries.
+* Investigate workforce and technology-sector layoff patterns.
+* Construct an AI Disruption Score using multiple workforce indicators.
+* Categorize careers into Low, Medium, and High Risk groups.
+* Analyze relationships between AI disruption, automation risk, and salaries.
+* Build a machine learning model for career-safety risk classification.
+* Build a baseline regression model for salary prediction.
+* Use statistical analysis to examine AI disruption among Data Science roles.
+* Communicate findings through data visualizations and quantitative metrics.
+
+## Datasets
+
+### Dataset 1 — AI-Powered Job Market Insights
+
+Contains job-market information including:
+
+* Job title
+* Industry
+* Company size
+* Location
+* AI adoption level
+* Automation risk
+* Required skills
+* Salary
+* Remote-friendliness
+* Job growth projection
+
+The dataset contains **500 job-market records**.
+
+### Dataset 2 — Tech Layoffs
+
+Contains technology-industry layoff information including:
+
+* Company
+* Location
+* Region
+* Country
+* Number of employees laid off
+* Layoff percentage
+* Industry
+* Funding
+* Company size before and after layoffs
+* Year
+* Geographic information
+
+The dataset contains **2,412 layoff records**.
+
+### Combined Analysis Dataset
+
+The two datasets are standardized by industry and aggregated before being combined with the job-market data.
+
+The resulting analytical dataset contains **500 records and 18 features**.
 
 ## Methodology
 
-| Phase | Description |
-|-------|-------------|
-| Data Ingestion | Aggregated industry and workforce data from multiple sources |
-| Data Cleaning | Handled missing values, validated data quality |
-| Feature Engineering | Constructed AI Adoption Index, Disruption Score, Skills Gap metrics |
-| Exploratory Analysis | Identified correlations, trends, and patterns |
-| Visualization | Generated interactive charts and dashboards |
-| Conclusions | Derived actionable insights and recommendations |
+The project follows an end-to-end data analysis and machine learning workflow.
 
-## Technical Stack
+### 1. Data Collection
 
-- **Python 3.x** – Core analysis engine
-- **Pandas & NumPy** – Data manipulation and statistical computing
-- **Matplotlib & Seaborn** – Advanced data visualization
-- **Jupyter Notebook** – Interactive analysis environment
+Publicly available job-market and technology-layoff datasets were collected and loaded into Pandas DataFrames.
 
-## Key Findings
+### 2. Data Cleaning
 
-### Industry Impact
+The project handles:
 
-**ADD HERE:** Replace with your actual industry analysis findings
-- **[Sector Name]**: [Disruption level and key insight]
-- **[Sector Name]**: [Disruption level and key insight]
-- Example: "Finance sector shows 65% job automation risk, but 3x growth in data analytics roles"
+* Missing numerical values
+* Inconsistent industry names
+* Industry naming variations across datasets
+* Data type and formatting inconsistencies
 
-### Workforce Trends
+Missing numerical values in the layoffs dataset are handled using median imputation for selected variables, while missing funding values are replaced with zero.
 
-**ADD HERE:** Include your analysis results
-- **High-Disruption Roles**: [List roles with disruption scores]
-- **Emerging Opportunities**: [Growth careers identified in your data]
-- **Skills Gap**: [Key skills showing highest demand increase]
+### 3. Industry Standardization
 
-### Quantitative Metrics
+Industry categories from the two datasets are mapped into common industry groups such as:
 
-| Metric | Value | Interpretation |
-|--------|-------|-----------------|
-| Average Disruption Index | [X.XX/10] | Overall industry transformation level |
-| Career Vulnerability Range | [Low-High] | Spread of automation risk across roles |
-| Emerging Skills Demand | [X%] | Year-over-year growth in new skill requirements |
+* Technology
+* Financial Services
+* Healthcare
+* Retail
+* Education
+* Entertainment
+* Transportation
+* Manufacturing
+* Telecommunications
 
-## Outputs & Visualizations
+This enables industry-level comparison between job-market and layoff data.
 
-### Charts & Reports
+### 4. Feature Engineering
 
-- **Industry Disruption Heatmap** – Visualization of disruption levels across sectors
-- **Career Vulnerability Matrix** – Risk assessment by role and industry
-- **Skills Demand Trajectory** – Trending skills over time
-- **Opportunity Map** – High-growth career paths identified
+Industry-level workforce indicators are calculated, including:
 
-### Generated Files
+* Total layoffs
+* Average layoff percentage
+* Number of layoff events
+* Average funding raised
 
+An ordinal `Risk_Score` is created from the original automation-risk categories:
+
+| Automation Risk | Risk Score |
+| --------------- | ---------: |
+| Low             |          1 |
+| Moderate        |          2 |
+| High            |          3 |
+
+An `AI_Disruption_Score` is then calculated using percentile ranks of:
+
+* Automation risk
+* Total layoffs
+* Average layoff percentage
+
+The resulting score is used to categorize careers into:
+
+* Low Risk
+* Medium Risk
+* High Risk
+
+A `Salary_Per_Risk` feature is also derived to compare salary levels relative to automation risk.
+
+## Exploratory Data Analysis
+
+The project performs exploratory analysis across job roles, industries, salaries, AI adoption, automation risk, workforce disruption, and layoff trends.
+
+Analysis includes:
+
+* Descriptive statistics
+* Distribution analysis
+* Correlation analysis
+* Skewness and kurtosis
+* Industry-level comparisons
+* Career-risk analysis
+* Salary analysis
+* Data Science career analysis
+
+Visualizations are created using Python visualization libraries to communicate patterns and relationships in the data.
+
+## Statistical Analysis
+
+A hypothesis test is performed on the AI Disruption Score of Data Science roles.
+
+### Hypotheses
+
+**H₀:** Mean AI Disruption Score of Data Science roles = 0.5
+
+**H₁:** Mean AI Disruption Score of Data Science roles ≠ 0.5
+
+The analysis produced:
+
+* Sample mean: **0.4847**
+* Population mean under H₀: **0.5**
+* Sample standard deviation: **0.1611**
+* Sample size: **11**
+* Z-statistic: **-0.3146**
+* p-value: **0.753054**
+* Significance level: **0.05**
+
+The analysis therefore fails to reject the null hypothesis at the 5% significance level.
+
+## Machine Learning
+
+### Career Safety Classification
+
+A machine learning workflow is used to classify careers into:
+
+* High Risk
+* Medium Risk
+* Low Risk
+
+The classification experiment uses features including:
+
+* AI Disruption Score
+* Automation Risk
+* AI Adoption Level
+* Salary
+* Risk Score
+
+The recorded evaluation uses an 80:20 train-test split.
+
+### Results
+
+| Metric             | Result |
+| ------------------ | -----: |
+| Total Samples      |     78 |
+| Training Samples   |     62 |
+| Testing Samples    |     16 |
+| Accuracy           | 93.75% |
+| Weighted Precision | 95.83% |
+
+A confusion matrix is also generated to evaluate classification performance across the three career-safety categories.
+
+> **Note:** Because the classification experiment uses a relatively small evaluation set, the reported metrics should be interpreted cautiously and would benefit from cross-validation and evaluation on a larger dataset.
+
+## Salary Prediction
+
+A baseline Linear Regression model is developed to investigate whether workforce disruption indicators can explain salary variation.
+
+Features include:
+
+* AI Disruption Score
+* Risk Score
+* Automation Risk
+* AI Adoption Level
+* Total Layoffs
+* Average Layoff Percentage
+
+### Results
+
+| Metric |   Result |
+| ------ | -------: |
+| R²     |  -0.2330 |
+| MAE    | ~$19,205 |
+| RMSE   | ~$25,238 |
+
+The negative R² indicates that this baseline linear model does not generalize well to the salary prediction task. This provides an important limitation of the current approach and suggests that additional features, nonlinear models, larger datasets, and stronger validation would be useful for future iterations.
+
+## Key Outputs
+
+The project produces analysis covering:
+
+* AI adoption patterns
+* Automation risk
+* Industry-level layoffs
+* Career safety categorization
+* AI disruption scoring
+* Salary relationships
+* Data Science career trends
+* Statistical hypothesis testing
+* Career-risk classification
+* Salary prediction
+* Confusion matrix analysis
+* Feature coefficient analysis
+
+## Project Structure
+
+```text
+AI-Workforce-Impact/
+│
+├── AI-Disruption-Index.ipynb
+│   └── Complete analysis, visualization,
+│       statistical testing and ML workflow
+│
+├── README.md
+│   └── Project documentation
+│
+└── .gitignore
 ```
-outputs/
-├── disruption_index_by_industry.csv      # Industry rankings and scores
-├── career_vulnerability_analysis.csv     # Role-by-role risk assessment
-├── skills_demand_report.csv              # Skills and their demand trends
-├── visualizations/
-│   ├── disruption_heatmap.png
-│   ├── career_vulnerability.png
-│   ├── skills_trends.png
-│   └── opportunity_zones.png
-└── summary_report.pdf                    # Executive summary
+
+## Technologies Used
+
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* Matplotlib
+* Seaborn
+* Jupyter Notebook
+* Google Colab
+
+## Machine Learning & Data Science Concepts
+
+This project demonstrates practical experience with:
+
+* Data cleaning
+* Missing-value handling
+* Data transformation
+* Feature engineering
+* Exploratory Data Analysis
+* Statistical analysis
+* Hypothesis testing
+* Feature encoding
+* Feature scaling
+* Linear Regression
+* Classification
+* Train-test splitting
+* Model evaluation
+* Accuracy
+* Precision
+* Confusion Matrix
+* MAE
+* RMSE
+* R²
+* Data visualization
+
+## How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Sakshi-0077/AI-Workforce-Impact.git
+cd AI-Workforce-Impact
 ```
 
-## How to Use
+### 2. Install dependencies
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Sakshi-0077/AI-Workforce-Impact.git
-   cd AI-Workforce-Impact
-   ```
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+```
 
-2. **Install dependencies**
-   ```bash
-   pip install pandas numpy matplotlib seaborn jupyter
-   ```
+### 3. Start Jupyter Notebook
 
-3. **Run the analysis**
-   - Open `AI-Workforce-Impact.ipynb` in Jupyter Notebook or Google Colab
-   - Execute cells sequentially to reproduce the analysis
+```bash
+jupyter notebook
+```
 
-4. **Review results**
-   - Explore outputs in the `outputs/` directory
-   - Check generated CSVs for detailed data
-   - View visualizations for key patterns
+Open:
 
-## Data Sources
+```text
+AI-Disruption-Index.ipynb
+```
 
-**ADD HERE:** Specify your data sources
-- Source 1: [Name, URL, access method]
-- Source 2: [Name, URL, access method]
-- Data collection period: [dates]
-- Methodology notes: [how data was collected/processed]
+### 4. Run the notebook
 
-## Insights & Recommendations
+Execute the notebook cells sequentially.
 
-### For Professionals
+The current notebook uses file-upload functionality for the input datasets, so the required CSV files must be provided when prompted.
 
-**ADD HERE:** Your specific recommendations
-- Upskill in high-demand areas: [specific skills from your analysis]
-- Consider career transitions toward: [growth roles identified]
-- Timeline: [your predictions on disruption acceleration]
+## Future Improvements
 
-### For Organizations
+Potential improvements include:
 
-**ADD HERE:** Organization-focused insights
-- Priority investment areas: [based on your findings]
-- Workforce planning strategy: [specific recommendations]
-- Risk mitigation: [strategies to address disruption]
+* Replace notebook-based file uploads with a reproducible data pipeline.
+* Add a dedicated Streamlit dashboard.
+* Automate dataset acquisition and preprocessing.
+* Apply cross-validation for more reliable model evaluation.
+* Compare multiple classification algorithms.
+* Perform systematic hyperparameter tuning.
+* Address class imbalance where applicable.
+* Increase dataset size for more reliable generalization.
+* Add explainable AI techniques such as feature importance and SHAP.
+* Deploy the analysis as an interactive web application.
+* Add automated testing and CI/CD.
+* Separate data processing, modeling, visualization, and application layers.
 
-### For Policymakers & Researchers
+## Limitations
 
-**ADD HERE:** Policy and research implications
-- Key labor market trends: [observations from your analysis]
-- Policy recommendations: [evidence-based suggestions]
-- Research implications: [contribution to broader AI impact understanding]
+* The analysis depends on publicly available datasets.
+* Dataset coverage may not fully represent the global workforce.
+* Some workforce relationships are observational and should not be interpreted as causal relationships.
+* The classification experiment uses a relatively small test set.
+* The salary regression baseline performs poorly, indicating that additional features and improved modeling are required.
+* The AI Disruption Score is a constructed analytical metric and should be interpreted as an exploratory indicator rather than an official measure of career risk.
 
-## Skills Demonstrated
+## Conclusion
 
-**Data Science & Analytics**
-- Exploratory Data Analysis (EDA) with statistical rigor
-- Feature engineering and metric creation
-- Data visualization and pattern recognition
-- Actionable insights generation
+This project demonstrates an end-to-end approach to analyzing the impact of AI on workforce dynamics.
 
-**Technical Proficiency**
-- Python data analysis pipeline
-- Large dataset manipulation with Pandas/NumPy
-- Publication-quality visualizations
-- Jupyter Notebook development
+By combining job-market information with technology-sector layoff data, the project creates derived workforce indicators and investigates their relationship with career risk and salary.
 
-**Business & Research Acumen**
-- Industry analysis and trend forecasting
-- Translation of complex data into strategic recommendations
-- Problem identification and solution design
+The project also extends beyond exploratory analysis by applying statistical testing and machine learning to classify career safety and establish a baseline for salary prediction.
+
+The analysis highlights both the potential of machine learning for workforce analytics and the importance of data quality, feature design, validation, and cautious interpretation when working with real-world datasets.
 
 ## License
 
-This project is available for educational and research purposes.
+This project is intended for educational and research purposes.
 
 ---
 
-**Last Updated:** 2026
+**Author:** Sakshi Shah
+**GitHub:** Sakshi-0077
